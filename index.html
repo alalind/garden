@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're Invited — Watercolor Florals in a Secret Garden</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage: #6B7F5E;
+    --sage-light: #8FA07F;
+    --sage-pale: #EAF0E4;
+    --cream: #FAF7F0;
+    --warm-white: #FDFCF8;
+    --bark: #5C4A35;
+    --bark-light: #8B7355;
+    --blush: #D4937A;
+    --blush-pale: #F5E8E2;
+    --ink: #2C2419;
+    --mist: #C8D5BE;
+    --gold: #C9A96E;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 4rem 2rem;
+    background: var(--warm-white);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 15% 20%, rgba(107,127,94,0.10) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 85% 80%, rgba(212,147,122,0.10) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 50% 50%, rgba(201,169,110,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* watercolor peony decorations */
+  .peony-decoration {
+    position: absolute;
+    pointer-events: none;
+  }
+  .peony-hero-tl {
+    top: -55px;
+    left: -65px;
+    width: 250px;
+    height: 250px;
+    opacity: 0.6;
+    transform: rotate(-18deg);
+  }
+  .peony-hero-br {
+    bottom: -75px;
+    right: -85px;
+    width: 360px;
+    height: 360px;
+    opacity: 0.6;
+    transform: rotate(22deg) scaleX(-1);
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp .8s .2s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp .9s .35s forwards;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: var(--sage);
+  }
+
+  .hero-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 1.5rem auto;
+    width: 260px;
+    opacity: 0;
+    animation: fadeUp .8s .5s forwards;
+  }
+  .hero-divider::before, .hero-divider::after {
+    content: '';
+    flex: 1;
+    height: .5px;
+    background: var(--mist);
+  }
+  .hero-divider span {
+    font-size: 18px;
+    color: var(--blush);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--bark-light);
+    max-width: 540px;
+    margin: 0 auto 2.5rem;
+    opacity: 0;
+    animation: fadeUp .8s .6s forwards;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 2.75rem;
+    opacity: 0;
+    animation: fadeUp .8s .7s forwards;
+  }
+
+  .meta-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--sage-pale);
+    border: .5px solid var(--mist);
+    border-radius: 100px;
+    padding: 7px 16px;
+    font-size: 12.5px;
+    color: var(--sage);
+    font-weight: 400;
+  }
+
+  .meta-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  .rsvp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--sage);
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 16px 38px;
+    border-radius: 2px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background .2s, transform .15s;
+    opacity: 0;
+    animation: fadeUp .8s .85s forwards;
+  }
+
+  .rsvp-btn:hover {
+    background: var(--bark);
+    transform: translateY(-2px);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--mist);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeUp .8s 1.1s forwards;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    width: 1px;
+    height: 36px;
+    background: linear-gradient(to bottom, var(--mist), transparent);
+    animation: scrollLine 1.6s 1.5s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0%, 100% { opacity: 0; transform: scaleY(0); transform-origin: top; }
+    50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 2rem; }
+
+  .container { max-width: 760px; margin: 0 auto; }
+
+  .section-eyebrow {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: .75rem;
+    display: block;
+  }
+
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.25;
+    margin-bottom: 1.25rem;
+    color: var(--ink);
+  }
+
+  .section-body {
+    font-size: .975rem;
+    line-height: 1.9;
+    color: var(--bark-light);
+  }
+
+  /* ── EXPERIENCE ── */
+  .experience { background: var(--warm-white); }
+
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 2.5rem;
+  }
+
+  @media (max-width: 560px) { .exp-grid { grid-template-columns: 1fr; } }
+
+  .exp-card {
+    background: var(--cream);
+    border: .5px solid var(--mist);
+    border-radius: 4px;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .exp-icon {
+    font-size: 22px;
+    margin-bottom: .75rem;
+  }
+
+  .exp-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: .4rem;
+    color: var(--ink);
+  }
+
+  .exp-desc {
+    font-size: .875rem;
+    line-height: 1.7;
+    color: var(--bark-light);
+  }
+
+  /* ── ITINERARY ── */
+  .itinerary { background: var(--cream); }
+
+  .timeline {
+    margin-top: 2.5rem;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 62px;
+    top: 0;
+    bottom: 0;
+    width: .5px;
+    background: linear-gradient(to bottom, transparent, var(--mist) 10%, var(--mist) 90%, transparent);
+  }
+
+  .tl-item {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 2rem;
+    position: relative;
+    align-items: flex-start;
+  }
+
+  .tl-time {
+    font-family: 'Playfair Display', serif;
+    font-size: .95rem;
+    font-style: italic;
+    color: var(--sage);
+    min-width: 50px;
+    text-align: right;
+    padding-top: 3px;
+    flex-shrink: 0;
+  }
+
+  .tl-dot-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    padding-top: 6px;
+  }
+
+  .tl-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1.5px solid var(--sage);
+    flex-shrink: 0;
+  }
+
+  .tl-dot.accent {
+    background: var(--sage);
+  }
+
+  .tl-content { flex: 1; padding-bottom: 1rem; }
+
+  .tl-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: .4rem;
+    color: var(--ink);
+  }
+
+  .tl-desc {
+    font-size: .875rem;
+    line-height: 1.75;
+    color: var(--bark-light);
+  }
+
+  /* ── DETAILS ── */
+  .details { background: var(--warm-white); }
+
+  .details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 500px) { .details-grid { grid-template-columns: 1fr; } }
+
+  .detail-card {
+    padding: 1.5rem 1.25rem;
+    border: .5px solid var(--mist);
+    border-radius: 4px;
+    background: var(--cream);
+  }
+
+  .detail-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: .5rem;
+    display: block;
+  }
+
+  .detail-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: .25rem;
+  }
+
+  .detail-note {
+    font-size: .8rem;
+    color: var(--bark-light);
+    line-height: 1.6;
+  }
+
+  .includes-list {
+    margin-top: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .include-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: .9rem;
+    color: var(--bark-light);
+    line-height: 1.6;
+  }
+
+  .include-item::before {
+    content: '✦';
+    color: var(--gold);
+    font-size: 10px;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  /* ── HOST ── */
+  .host { background: var(--sage-pale); }
+
+  .host-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (max-width: 600px) { .host-inner { grid-template-columns: 1fr; gap: 2rem; } }
+
+  .host-monogram {
+    width: 100%;
+    max-width: 220px;
+    aspect-ratio: 1;
+    background: var(--sage);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: white;
+    font-style: italic;
+    opacity: .9;
+  }
+
+  .host-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 1.5rem;
+  }
+
+  .host-tag {
+    font-size: 11px;
+    padding: 4px 12px;
+    border: .5px solid var(--sage);
+    border-radius: 100px;
+    color: var(--sage);
+    font-weight: 400;
+  }
+
+  /* ── RSVP ── */
+  .rsvp-section {
+    background: var(--ink);
+    color: white;
+    text-align: center;
+    padding: 6rem 2rem;
+  }
+
+  .rsvp-section .section-eyebrow { color: var(--gold); }
+
+  .rsvp-section .section-heading { color: white; }
+
+  .rsvp-section .section-body { color: rgba(255,255,255,.6); max-width: 480px; margin: 0 auto 2.5rem; }
+
+  /* RSVP MODAL */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(44,36,25,.75);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s;
+  }
+
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal {
+    background: var(--warm-white);
+    border-radius: 6px;
+    padding: 0;
+    max-width: 520px;
+    width: 100%;
+    height: 78vh;
+    max-height: 680px;
+    position: relative;
+    overflow: hidden;
+    transform: translateY(20px);
+    transition: transform .3s;
+  }
+
+  .modal-iframe-wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .modal-iframe-wrap iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .modal-overlay.open .modal {
+    transform: translateY(0);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 12px; right: 12px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--warm-white);
+    border-radius: 50%;
+    box-shadow: 0 1px 6px rgba(44,36,25,.15);
+    border: none;
+    z-index: 5;
+    font-size: 1.4rem;
+    color: var(--bark-light);
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .modal-eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: .5rem;
+  }
+
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 1.75rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.125rem;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--bark-light);
+    margin-bottom: .4rem;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    border: .5px solid var(--mist);
+    border-radius: 3px;
+    padding: 10px 12px;
+    font-size: .9rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    color: var(--ink);
+    background: white;
+    transition: border-color .15s;
+    appearance: none;
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--sage);
+  }
+
+  .form-textarea { min-height: 72px; resize: vertical; }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--sage);
+    color: white;
+    border: none;
+    border-radius: 2px;
+    padding: 14px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background .2s;
+    margin-top: .75rem;
+  }
+
+  .submit-btn:hover { background: var(--bark); }
+
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 1.5rem 0;
+  }
+
+  .success-msg .success-icon { font-size: 2.5rem; margin-bottom: .75rem; }
+
+  .success-msg h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    margin-bottom: .5rem;
+    color: var(--ink);
+  }
+
+  .success-msg p { font-size: .875rem; color: var(--bark-light); line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,.4);
+    text-align: center;
+    padding: 2rem;
+    font-size: .8rem;
+    letter-spacing: .05em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- Watercolor peony illustration definitions (reused via <use>) -->
+<svg style="position:absolute; width:0; height:0; overflow:hidden;" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="watercolor-tex" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018 0.022" numOctaves="4" seed="11" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+
+    <linearGradient id="grad-outer-pale" x1="0.5" y1="1" x2="0.5" y2="0">
+      <stop offset="0%" stop-color="#F2C9C2" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#FAF7F0" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="grad-outer" x1="0.5" y1="1" x2="0.5" y2="0">
+      <stop offset="0%" stop-color="#D4937A" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#F5E8E2" stop-opacity="0.25"/>
+    </linearGradient>
+    <linearGradient id="grad-mid-pale" x1="0.5" y1="1" x2="0.5" y2="0">
+      <stop offset="0%" stop-color="#D98F78" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#F2C9C2" stop-opacity="0.1"/>
+    </linearGradient>
+    <linearGradient id="grad-mid" x1="0.5" y1="1" x2="0.5" y2="0">
+      <stop offset="0%" stop-color="#C97A5F" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#E8A8A0" stop-opacity="0.35"/>
+    </linearGradient>
+    <linearGradient id="grad-inner" x1="0.5" y1="1" x2="0.5" y2="0">
+      <stop offset="0%" stop-color="#A85B45" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#D4937A" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="grad-leaf" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5C7049" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#9CB089" stop-opacity="0.3"/>
+    </linearGradient>
+
+    <path id="petal-outer" d="M0,0 C-44,-30 -50,-85 0,-128 C50,-85 44,-30 0,0 Z"/>
+    <path id="petal-outer-bleed" d="M0,0 C-50,-35 -57,-96 0,-140 C57,-96 50,-35 0,0 Z"/>
+    <path id="petal-mid" d="M0,0 C-30,-20 -34,-58 0,-82 C34,-58 30,-20 0,0 Z"/>
+    <path id="petal-mid-bleed" d="M0,0 C-35,-24 -40,-67 0,-94 C40,-67 35,-24 0,0 Z"/>
+    <path id="petal-inner" d="M0,0 C-17,-12 -19,-32 0,-46 C19,-32 17,-12 0,0 Z"/>
+    <path id="leaf-shape" d="M0,0 C-14,-10 -16,-30 0,-46 C16,-30 14,-10 0,0 Z"/>
+
+    <symbol id="peony-bloom" viewBox="0 0 400 400">
+      <g filter="url(#watercolor-tex)">
+        <ellipse cx="200" cy="198" rx="160" ry="155" fill="#F5E8E2" opacity="0.28"/>
+
+        <g fill="url(#grad-outer-pale)">
+          <use href="#petal-outer-bleed" transform="translate(200,200) rotate(0)"/>
+          <use href="#petal-outer-bleed" transform="translate(200,200) rotate(45)"/>
+          <use href="#petal-outer-bleed" transform="translate(200,200) rotate(90)"/>
+          <use href="#petal-outer-bleed" transform="translate(200,200) rotate(135)"/>
+          <use href="#petal-outer-bleed" transform="translate(200,200) rotate(180)"/>
+          <use href="#petal-outer-bleed" transform="translate(200,200) rotate(225)"/>
+          <use href="#petal-outer-bleed" transform="translate(200,200) rotate(270)"/>
+          <use href="#petal-outer-bleed" transform="translate(200,200) rotate(315)"/>
+        </g>
+        <g fill="url(#grad-outer)">
+          <use href="#petal-outer" transform="translate(200,200) rotate(0)"/>
+          <use href="#petal-outer" transform="translate(200,200) rotate(45)"/>
+          <use href="#petal-outer" transform="translate(200,200) rotate(90)"/>
+          <use href="#petal-outer" transform="translate(200,200) rotate(135)"/>
+          <use href="#petal-outer" transform="translate(200,200) rotate(180)"/>
+          <use href="#petal-outer" transform="translate(200,200) rotate(225)"/>
+          <use href="#petal-outer" transform="translate(200,200) rotate(270)"/>
+          <use href="#petal-outer" transform="translate(200,200) rotate(315)"/>
+        </g>
+
+        <g fill="url(#grad-mid-pale)">
+          <use href="#petal-mid-bleed" transform="translate(200,200) rotate(25)"/>
+          <use href="#petal-mid-bleed" transform="translate(200,200) rotate(85)"/>
+          <use href="#petal-mid-bleed" transform="translate(200,200) rotate(145)"/>
+          <use href="#petal-mid-bleed" transform="translate(200,200) rotate(205)"/>
+          <use href="#petal-mid-bleed" transform="translate(200,200) rotate(265)"/>
+          <use href="#petal-mid-bleed" transform="translate(200,200) rotate(325)"/>
+        </g>
+        <g fill="url(#grad-mid)">
+          <use href="#petal-mid" transform="translate(200,200) rotate(25)"/>
+          <use href="#petal-mid" transform="translate(200,200) rotate(85)"/>
+          <use href="#petal-mid" transform="translate(200,200) rotate(145)"/>
+          <use href="#petal-mid" transform="translate(200,200) rotate(205)"/>
+          <use href="#petal-mid" transform="translate(200,200) rotate(265)"/>
+          <use href="#petal-mid" transform="translate(200,200) rotate(325)"/>
+        </g>
+
+        <g fill="url(#grad-inner)">
+          <use href="#petal-inner" transform="translate(200,200) rotate(8)"/>
+          <use href="#petal-inner" transform="translate(200,200) rotate(80)"/>
+          <use href="#petal-inner" transform="translate(200,200) rotate(152)"/>
+          <use href="#petal-inner" transform="translate(200,200) rotate(224)"/>
+          <use href="#petal-inner" transform="translate(200,200) rotate(296)"/>
+        </g>
+
+        <g fill="#C9A96E" opacity="0.85">
+          <circle cx="194" cy="196" r="4"/>
+          <circle cx="206" cy="193" r="3.5"/>
+          <circle cx="201" cy="205" r="4.5"/>
+          <circle cx="209" cy="203" r="3"/>
+          <circle cx="191" cy="206" r="3"/>
+          <circle cx="200" cy="195" r="3.5"/>
+        </g>
+      </g>
+
+      <g filter="url(#watercolor-tex)" opacity="0.8">
+        <path d="M195,318 C188,345 178,368 165,385" stroke="#6B7F5E" stroke-width="5" fill="none" opacity="0.55"/>
+        <use href="#leaf-shape" fill="url(#grad-leaf)" transform="translate(150,340) rotate(-55) scale(1.6)"/>
+        <use href="#leaf-shape" fill="url(#grad-leaf)" transform="translate(205,365) rotate(35) scale(1.8)"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- decorative watercolor peonies -->
+  <svg class="peony-decoration peony-hero-tl" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><use href="#peony-bloom"/></svg>
+  <svg class="peony-decoration peony-hero-br" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><use href="#peony-bloom"/></svg>
+
+
+  <p class="hero-eyebrow">For my favorite people</p>
+  <h1 class="hero-title">Watercolor Florals<br>in a <em>Secret Garden</em></h1>
+
+  <div class="hero-divider"><span>✦</span></div>
+
+  <p class="hero-desc">I've been quietly building something I'm so excited to share with you. A morning in nature — painting flowers, walking through redwoods, and making something beautiful together. I'd love for you to be one of the first.</p>
+
+  <div class="hero-meta">
+    <span class="meta-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Saturday, June 20, 2026
+    </span>
+    <span class="meta-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      9am – 12pm
+    </span>
+    <span class="meta-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Up to 6 guests
+    </span>
+    <span class="meta-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Meets at the Altamont Café
+    </span>
+  </div>
+
+  <button class="rsvp-btn" onclick="openModal()">
+    I'd Love to Come
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </button>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience">
+  <div class="container">
+    <span class="section-eyebrow reveal">The Experience</span>
+    <h2 class="section-heading reveal">A morning I've been dreaming up for you</h2>
+    <p class="section-body reveal">This is something I've wanted to share with the people I love for a long time. A slow, beautiful morning in nature — a chance to make something with your hands, breathe some fresh air, and leave with flowers and a painting you made yourself.</p>
+
+    <div class="exp-grid">
+      <div class="exp-card reveal">
+        <div class="exp-icon">🌲</div>
+        <div class="exp-title">Walk through the redwoods</div>
+        <div class="exp-desc">Your morning begins with a guided stroll through a peaceful grove — the perfect way to arrive at a slower pace and open your senses before you paint.</div>
+      </div>
+      <div class="exp-card reveal">
+        <div class="exp-icon">🌸</div>
+        <div class="exp-title">Pick your own flowers</div>
+        <div class="exp-desc">Choose from a curated selection of seasonal blooms, arrange them into your own bouquet, and use it as your painting subject.</div>
+      </div>
+      <div class="exp-card reveal">
+        <div class="exp-icon">🎨</div>
+        <div class="exp-title">Guided watercolor session</div>
+        <div class="exp-desc">A trained artist leads you through watercolor techniques — accessible for all skill levels. No experience needed, just curiosity.</div>
+      </div>
+      <div class="exp-card reveal">
+        <div class="exp-icon">🌿</div>
+        <div class="exp-title">Take it all home</div>
+        <div class="exp-desc">Your finished watercolor canvas and your wrapped floral bouquet are yours to keep. A tangible memory of the morning.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ITINERARY -->
+<section class="itinerary">
+  <div class="container">
+    <span class="section-eyebrow reveal">The Day</span>
+    <h2 class="section-heading reveal">Your morning, hour by hour</h2>
+    <p class="section-body reveal">Every session runs from 9am to noon. Here's how the morning unfolds.</p>
+
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-time">9:00</div>
+        <div class="tl-dot-wrap"><div class="tl-dot accent"></div></div>
+        <div class="tl-content">
+          <div class="tl-title">Gather at the Altamont Café</div>
+          <div class="tl-desc">We meet at a beloved local café, get a warm drink, and ease into the morning together. This is the beginning of the experience — unhurried, warm, and social.</div>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-time">9:15</div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-content">
+          <div class="tl-title">Redwood walk to the garden</div>
+          <div class="tl-desc">A short guided walk through a peaceful redwood grove leads you to your private outdoor painting location — secluded, beautiful, and away from everything.</div>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-time">9:30</div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-content">
+          <div class="tl-title">Arrival at the garden studio</div>
+          <div class="tl-desc">Guests settle into the outdoor painting area, surrounded by trees, flowers, and birdsong. Supplies are laid out and waiting for you.</div>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-time">9:45</div>
+        <div class="tl-dot-wrap"><div class="tl-dot accent"></div></div>
+        <div class="tl-content">
+          <div class="tl-title">Flower selection &amp; watercolor demo</div>
+          <div class="tl-desc">Pick your flowers and arrange your bouquet. Your host guides you through approachable watercolor techniques — floral sketching, wet-on-wet layering, and more. All levels welcome.</div>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-time">10:00</div>
+        <div class="tl-dot-wrap"><div class="tl-dot accent"></div></div>
+        <div class="tl-content">
+          <div class="tl-title">Guided painting session</div>
+          <div class="tl-desc">Ninety minutes of painting, with your host available for one-on-one coaching. All supplies are provided. This is the heart of the morning — meditative, expressive, and yours.</div>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-time">11:30</div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-content">
+          <div class="tl-title">Sharing circle &amp; farewells</div>
+          <div class="tl-desc">Guests share their paintings, take photos in the garden, and wrap up their bouquets. A gentle end to a beautiful morning.</div>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-content">
+          <div class="tl-title">Walk back &amp; suggested lunch</div>
+          <div class="tl-desc">Return through the redwoods to the Altamont. Lunch in the neighborhood is highly recommended — the morning tends to leave people hungry and happy.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<section class="details">
+  <div class="container">
+    <span class="section-eyebrow reveal">The Details</span>
+    <h2 class="section-heading reveal">Everything included — on me</h2>
+
+    <div class="details-grid">
+      <div class="detail-card reveal">
+        <span class="detail-label">Cost</span>
+        <div class="detail-value" style="display:flex;align-items:center;gap:10px;">
+          <span style="text-decoration:line-through;color:var(--mist);font-size:1.1rem;">$126</span>
+          <span style="color:var(--sage);">Complimentary</span>
+        </div>
+        <div class="detail-note">My gift to you — supplies, flowers, and the whole morning included</div>
+      </div>
+      <div class="detail-card reveal">
+        <span class="detail-label">The Date</span>
+        <div class="detail-value" style="font-size:1.3rem;">Sat, June 20</div>
+        <div class="detail-note">9am – 12pm. If that doesn't work, let me know in the RSVP — I have a little flexibility.</div>
+      </div>
+      <div class="detail-card reveal">
+        <span class="detail-label">Meet at</span>
+        <div class="detail-value" style="font-size:1.1rem;">The Altamont</div>
+        <div class="detail-note">9am sharp · we'll walk to the garden together from there</div>
+      </div>
+      <div class="detail-card reveal">
+        <span class="detail-label">Group size</span>
+        <div class="detail-value">Max 6</div>
+        <div class="detail-note">Intentionally tiny — so everyone gets attention and it actually feels special</div>
+      </div>
+    </div>
+
+    <div class="includes-list reveal">
+      <div class="include-item">All watercolor supplies — paints, paper, brushes, and everything you need</div>
+      <div class="include-item">Seasonal flowers to arrange and paint from</div>
+      <div class="include-item">Your finished watercolor canvas to take home</div>
+      <div class="include-item">Your custom floral bouquet, wrapped to go</div>
+      <div class="include-item">Guided instruction throughout — from first sketch to final brushstroke</div>
+      <div class="include-item">Guided walk through the redwoods, both ways</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOST -->
+<section class="host">
+  <div class="container">
+    <div class="host-inner">
+      <div class="reveal">
+        <div class="host-monogram">A</div>
+      </div>
+      <div>
+        <span class="section-eyebrow reveal">A note from me</span>
+        <h2 class="section-heading reveal">Why I'm doing this</h2>
+        <p class="section-body reveal">Community, creativity, and nature are my three great loves. I studied painting in Florence, built an artist community for years, and have spent a career making things — both with paint and pixels. Leading design at Goodreads keeps me close to creativity every day, but I've missed making art with the people I care about most.</p>
+        <p class="section-body reveal" style="margin-top:1rem;">This experience is my way of bringing those worlds together. I'd love for you to be part of the very first one.</p>
+        <div class="host-tags reveal">
+          <span class="host-tag">Studied in Florence, Italy</span>
+          <span class="host-tag">BFA, California University</span>
+          <span class="host-tag">25 years as a working artist</span>
+          <span class="host-tag">Design Leader, Goodreads</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RSVP SECTION -->
+<section class="rsvp-section">
+  <span class="section-eyebrow reveal">RSVP</span>
+  <h2 class="section-heading reveal" style="margin-bottom:.75rem;">Save the date — spots are limited</h2>
+  <p class="section-body reveal">Saturday, June 20th, 9am to noon. Only 6 spots, so I hope you can make it — but if that date doesn't work, let me know in the RSVP and share a few dates that would.</p>
+  <button class="rsvp-btn" onclick="openModal()" style="animation:none;opacity:1;">
+    I'd Love to Come
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </button>
+</section>
+
+<footer>
+  Watercolor Florals in a Secret Garden &nbsp;·&nbsp; Sebastopol, CA &nbsp;·&nbsp; Questions? Reach out directly.
+</footer>
+
+<!-- RSVP MODAL -->
+<div class="modal-overlay" id="modal" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal-iframe-wrap">
+      <iframe src="https://forms.fillout.com/t/nNaBVzC4Pwus" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Modal
+  function openModal() {
+    document.getElementById('modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('modal')) closeModal();
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
